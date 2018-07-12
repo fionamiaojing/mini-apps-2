@@ -1,0 +1,20 @@
+#chart {
+    width: 90%
+}
+
+button {
+    background-color: #3a3a59;
+    border: none;
+    color: white;
+    padding: 5px;
+    font-size: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+
+#disclaimer {
+    font-style: italic;
+    margin: auto;
+    width: 80%;
+}
