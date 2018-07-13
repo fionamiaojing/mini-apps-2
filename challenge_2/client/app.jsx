@@ -7,18 +7,25 @@ export default class App extends React.Component {
         super(props);
         this.state = {
             label: [],
-            data: []
+            data: [],
+            currency: 'USD'
         };
         this.inputFrom = React.createRef();
         this.inputTo = React.createRef();
     }
 
-    handleClick() {
-        this.fetchPrice(this.inputFrom.current.value, this.inputTo.current.value);
+    handleCurrencyChange(event) {
+        this.setState({
+            currency: event.target.value
+        });
     }
 
-    fetchPrice(start, end) {
-        let url = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${start}&end=${end}`;
+    handleClick() {
+        this.fetchPrice(this.inputFrom.current.value, this.inputTo.current.value, this.state.currency);
+    }
+
+    fetchPrice(start, end, currency) {
+        let url = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${start}&end=${end}&currency=${currency}`;
         axios.get(url)
             .then((res) => {
                 this.convertData(res.data.bpi);
@@ -50,7 +57,14 @@ export default class App extends React.Component {
                     Bitcoin Price Index
                 </h2>
                 <h4>
-                    Currency: USD
+                    Currency:
+                    <select 
+                        value={this.state.currency} 
+                        onChange={(event) => this.handleCurrencyChange(event)}>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="GBP">GBP</option>
+                    </select>
                 </h4>
                 <form>
                     From: <input type="date" name="bday" 
