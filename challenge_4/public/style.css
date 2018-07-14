@@ -1,0 +1,31 @@
+table {
+    margin-top: 40px;
+    margin-left: 40px;
+    border-collapse: collapse;
+    cursor: pointer;
+}
+
+td {
+    border: 2px solid #f2f2f0;
+    margin: 0;
+    text-align: center;
+    color: #f2f2f0;
+    width: 60px;
+    height: 60px;
+}
+
+.bomb {
+    background-image: url('bombicon.png');
+}
+
+body {
+    background-color: #404b69
+}
+
+#reset {
+    width: 100px;
+    height: 40px;
+    color: #ff7a8a;
+    font-size: 20px;
+    border-radius: 5px;
+}
